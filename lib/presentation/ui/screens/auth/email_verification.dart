@@ -52,7 +52,11 @@ class _EmailVerificationState extends State<EmailVerification> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         textStyle: const TextStyle(
                           fontSize: 16,
-                        )),
+                          letterSpacing: 0.5,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
                     onPressed: () {},
                     child: const Text('Next')),
               )
