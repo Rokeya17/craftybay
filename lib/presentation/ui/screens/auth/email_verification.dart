@@ -1,5 +1,7 @@
+import 'package:craftybay/presentation/ui/screens/auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../../utility/image_assets.dart';
 
@@ -38,28 +40,17 @@ class _EmailVerificationState extends State<EmailVerification> {
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Enter your Email',
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(),
-                  disabledBorder: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        textStyle: const TextStyle(
-                          fontSize: 16,
-                          letterSpacing: 0.5,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(const OTPVerification());
+                    },
                     child: const Text('Next')),
-              )
+              ),
             ],
           ),
         ),
