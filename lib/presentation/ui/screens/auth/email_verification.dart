@@ -34,22 +34,28 @@ class _EmailVerificationState extends State<EmailVerification> {
                       .textTheme
                       .titleLarge
                       ?.copyWith(fontSize: 24, color: Colors.black)),
-              const SizedBox(width: 16),
-              Text('Please enter your email address',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall
-                      ?.copyWith(color: Colors.blueGrey)),
               const SizedBox(height: 16),
               TextFormField(
                 decoration: const InputDecoration(
+                  labelText: 'Enter your Email',
+                  contentPadding: EdgeInsets.symmetric(horizontal: 16),
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(),
                   disabledBorder: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(onPressed: () {}, child: const Text('Next'))
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                        )),
+                    onPressed: () {},
+                    child: const Text('Next')),
+              )
             ],
           ),
         ),
