@@ -1,8 +1,9 @@
+import 'package:craftybay/presentation/ui/screens/auth/email_verification.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../utility/image_assets.dart';
-import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,11 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void goToNextScreen() {
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
-          (route) => false);
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.offAll(const EmailVerification());
     });
   }
 
@@ -44,6 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
           const CircularProgressIndicator(
             color: Color(0xFF03225D),
           ),
+          const SizedBox(height: 16),
           const Text('Version 1.0.0'),
         ],
       ),
