@@ -1,6 +1,8 @@
+import 'package:craftybay/presentation/ui/screens/auth/complete_profile_screen.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../utility/image_assets.dart';
@@ -73,7 +75,15 @@ class _OTPVerificationState extends State<OTPVerification> {
                   },
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(const CompleteProfileScreen());
+                    },
+                    child: const Text('Next')),
+              ),
+              const SizedBox(height: 8),
               RichText(
                 text: const TextSpan(
                   style: TextStyle(color: Colors.grey),
@@ -88,10 +98,6 @@ class _OTPVerificationState extends State<OTPVerification> {
                     onPressed: () {},
                     child: const Text('Resend'),
                   )),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(onPressed: () {}, child: Text('Next')),
-              )
             ],
           ),
         ),
