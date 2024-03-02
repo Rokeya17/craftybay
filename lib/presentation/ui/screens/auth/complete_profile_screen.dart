@@ -1,8 +1,6 @@
-import 'package:craftybay/presentation/ui/screens/home_screen.dart';
 import 'package:craftybay/presentation/utility/image_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class CompleteProfile extends StatefulWidget {
   const CompleteProfile({super.key});
@@ -79,10 +77,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(HomeScreen());
-                      },
-                      child: const Text('Complete')),
+                      onPressed: () {}, child: const Text('Complete')),
                 ),
               ],
             ),

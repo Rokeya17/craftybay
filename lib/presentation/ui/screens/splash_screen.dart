@@ -1,4 +1,4 @@
-import 'package:craftybay/presentation/ui/screens/auth/email_verification.dart';
+import 'package:craftybay/presentation/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void goToNextScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAll(const EmailVerification());
+      Get.offAll(HomeScreen());
     });
   }
 
