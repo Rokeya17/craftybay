@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void goToNextScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAll(HomeScreen());
+      Get.offAll(const HomeScreen());
     });
   }
 
