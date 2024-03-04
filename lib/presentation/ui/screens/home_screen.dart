@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:craftybay/presentation/utility/image_assets.dart';
 import 'package:craftybay/presentation/widgets/home/homeslider.dart';
 import 'package:craftybay/presentation/widgets/home/section_header.dart';
@@ -43,12 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ]),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Column(children: [
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.search,
@@ -61,11 +62,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              HomeSlider(),
-              SectionHeader(),
+              const HomeSlider(),
+              SectionHeader(
+                onTap: () {},
+                title: 'Categories',
+              ),
+              SizedBox(
+                height: 100,
+                child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: const EdgeInsets.all(16),
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryColor.withOpacity(0.3)),
+                        child: const Icon(Icons.shop),
+                      );
+                    }),
+              )
             ]),
           ),
         ),
