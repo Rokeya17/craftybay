@@ -1,5 +1,6 @@
 import 'package:craftybay/presentation/utility/image_assets.dart';
 import 'package:craftybay/presentation/widgets/home/homeslider.dart';
+import 'package:craftybay/presentation/widgets/home/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -64,9 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 16,
               ),
               HomeSlider(),
-              SizedBox(
-                height: 16,
-              ),
+              SectionHeader(),
             ]),
           ),
         ),
