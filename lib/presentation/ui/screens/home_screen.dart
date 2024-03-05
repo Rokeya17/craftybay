@@ -1,10 +1,10 @@
-import 'package:craftybay/presentation/utility/app_colors.dart';
-import 'package:craftybay/presentation/utility/image_assets.dart';
+import 'package:craftybay/presentation/widgets/category_card.dart';
 import 'package:craftybay/presentation/widgets/home/homeslider.dart';
 import 'package:craftybay/presentation/widgets/home/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../utility/image_assets.dart';
 import '../../widgets/circular_iconbutton.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -71,20 +71,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'Categories',
               ),
               SizedBox(
-                height: 100,
+                height: 90,
                 child: ListView.builder(
                     itemCount: 10,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Container(
-                        padding: const EdgeInsets.all(16),
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        decoration: BoxDecoration(
-                            color: AppColors.primaryColor.withOpacity(0.3)),
-                        child: const Icon(Icons.shop),
-                      );
+                      return const CategoryCard();
                     }),
-              )
+              ),
+              SectionHeader(
+                onTap: () {},
+                title: 'Popular',
+              ),
             ]),
           ),
         ),
