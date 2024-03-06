@@ -1,8 +1,10 @@
+import 'package:craftybay/presentation/ui/screens/category_list_screen.dart';
 import 'package:craftybay/presentation/widgets/category_card.dart';
 import 'package:craftybay/presentation/widgets/home/homeslider.dart';
 import 'package:craftybay/presentation/widgets/home/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../utility/image_assets.dart';
 import '../../widgets/circular_iconbutton.dart';
@@ -68,7 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const HomeSlider(),
               SectionHeader(
-                onTap: () {},
+                onTap: () {
+                  Get.to(const CategoryListScreen());
+                },
                 title: 'Categories',
               ),
               SizedBox(
@@ -95,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SectionHeader(
                 onTap: () {},
-                title: 'special',
+                title: 'Special',
               ),
               SizedBox(
                 height: 165,
