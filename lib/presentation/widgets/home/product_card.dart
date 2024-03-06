@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                 Text(
                   '\$90',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: AppColors.primaryColor),
                 ),
@@ -53,19 +53,20 @@ class ProductCard extends StatelessWidget {
                   Icon(
                     Icons.star,
                     color: Colors.amber,
-                    size: 20,
+                    size: 16,
                   ),
                   Text(
                     '4.5',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ]),
                 Card(
-                  color: Colors.red,
+                  color: Colors.white54,
                   child: Padding(
                     padding: EdgeInsets.all(2.0),
                     child: Icon(
-                      Icons.favorite_border,
+                      Icons.favorite,
+                      color: Colors.red,
                       size: 16,
                     ),
                   ),

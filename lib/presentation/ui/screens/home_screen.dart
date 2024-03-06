@@ -84,12 +84,41 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {},
                 title: 'Popular',
               ),
-              ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 20,
-                  itemBuilder: (context, index) {
-                    return const ProductCard();
-                  }),
+              SizedBox(
+                height: 165,
+                child: ListView.builder(
+                    itemCount: 20,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return const ProductCard();
+                    }),
+              ),
+              SectionHeader(
+                onTap: () {},
+                title: 'special',
+              ),
+              SizedBox(
+                height: 165,
+                child: ListView.builder(
+                    itemCount: 20,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return const ProductCard();
+                    }),
+              ),
+              SectionHeader(
+                onTap: () {},
+                title: 'New',
+              ),
+              SizedBox(
+                height: 165,
+                child: ListView.builder(
+                    itemCount: 20,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return const ProductCard();
+                    }),
+              ),
             ]),
           ),
         ),
