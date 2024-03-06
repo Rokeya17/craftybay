@@ -1,4 +1,3 @@
-import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:craftybay/presentation/widgets/category_card.dart';
 import 'package:craftybay/presentation/widgets/home/homeslider.dart';
 import 'package:craftybay/presentation/widgets/home/section_header.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utility/image_assets.dart';
 import '../../widgets/circular_iconbutton.dart';
+import '../../widgets/home/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -84,61 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {},
                 title: 'Popular',
               ),
-              Card(
-                shadowColor: AppColors.primaryColor.withOpacity(0.1),
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                child: SizedBox(
-                  width: 100,
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8)),
-                          image: const DecorationImage(
-                              image: AssetImage(
-                            ImageAssets.shoepng,
-                          )),
-                          color: AppColors.primaryColor.withOpacity(0.1),
-                        ),
-                      ),
-                      const Text(
-                        'Nike shoes Ak10203040',
-                        maxLines: 1,
-                        style: TextStyle(overflow: TextOverflow.ellipsis),
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('\$90'),
-                          Wrap(children: [
-                            Icon(
-                              Icons.star_border,
-                              color: Colors.amber,
-                              size: 15,
-                            ),
-                            Text('90'),
-                          ]),
-                          Card(
-                            color: Colors.red,
-                            child: Padding(
-                              padding: EdgeInsets.all(2.0),
-                              child: Icon(
-                                Icons.favorite_border,
-                                size: 15,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              )
+              ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return const ProductCard();
+                  }),
             ]),
           ),
         ),
