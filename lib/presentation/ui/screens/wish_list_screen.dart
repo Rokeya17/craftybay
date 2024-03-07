@@ -14,33 +14,39 @@ class WishListScreen extends StatefulWidget {
 class _WishListScreenState extends State<WishListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 4,
-        title: const Text(
-          'WishList',
-          style: TextStyle(color: Colors.black),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Get.find<BottomNavController>().backtohome();
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
+    return WillPopScope(
+      onWillPop: () {
+        Get.find<BottomNavController>().backtohome();
+        return false ;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 4,
+          title: const Text(
+            'WishList',
+            style: TextStyle(color: Colors.black),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Get.find<BottomNavController>().backtohome();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, mainAxisSpacing: 16, crossAxisSpacing: 16),
-            itemCount: 20,
-            itemBuilder: (context, index) {
-              return const ProductCard();
-            }),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 16, crossAxisSpacing: 16),
+              itemCount: 20,
+              itemBuilder: (context, index) {
+                return const ProductCard();
+              }),
+        ),
       ),
     );
   }

@@ -13,32 +13,38 @@ class CategoryListScreen extends StatefulWidget {
 class _CategoryListScreenState extends State<CategoryListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Categories',
-          style: TextStyle(color: Colors.black),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Get.find<BottomNavController>().backtohome();
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
+    return WillPopScope(
+      onWillPop: () async {
+        Get.find<BottomNavController>().backtohome();
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text(
+            'Categories',
+            style: TextStyle(color: Colors.black),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Get.find<BottomNavController>().backtohome();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, mainAxisSpacing: 16, crossAxisSpacing: 16),
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return const FittedBox(child: CategoryCard());
-            }),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4, mainAxisSpacing: 16, crossAxisSpacing: 16),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return const FittedBox(child: CategoryCard());
+              }),
+        ),
       ),
     );
   }
