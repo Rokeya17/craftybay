@@ -1,4 +1,7 @@
 import 'package:craftybay/presentation/ui/screens/category_list_screen.dart';
+import 'package:craftybay/presentation/ui/screens/new_product_screen.dart';
+import 'package:craftybay/presentation/ui/screens/popular_product_screen.dart';
+import 'package:craftybay/presentation/ui/screens/special_product_screen.dart';
 import 'package:craftybay/presentation/widgets/category_card.dart';
 import 'package:craftybay/presentation/widgets/home/homeslider.dart';
 import 'package:craftybay/presentation/widgets/home/section_header.dart';
@@ -85,7 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ),
               SectionHeader(
-                onTap: () {},
+                onTap: () {
+                  Get.to(const PopularScreen());
+                },
                 title: 'Popular',
               ),
               SizedBox(
@@ -98,7 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ),
               SectionHeader(
-                onTap: () {},
+                onTap: () {
+                  Get.to(const SpecialScreen());
+                },
                 title: 'Special',
               ),
               SizedBox(
@@ -111,13 +118,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ),
               SectionHeader(
-                onTap: () {},
+                onTap: () {
+                  Get.to(const NewProductScreen());
+                },
                 title: 'New',
               ),
               SizedBox(
                 height: 165,
                 child: ListView.builder(
-                    itemCount: 20,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return const ProductCard();

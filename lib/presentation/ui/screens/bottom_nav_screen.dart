@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/ui/screens/category_list_screen.dart';
 import 'package:craftybay/presentation/ui/screens/home_screen.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _selectedindex = 0;
   final List<Widget> _screens = [
     const HomeScreen(),
-    const HomeScreen(),
+    const CategoryListScreen(),
     const HomeScreen(),
   ];
   @override

@@ -1,21 +1,22 @@
-import 'package:craftybay/presentation/widgets/category_card.dart';
+import 'package:craftybay/presentation/widgets/home/product_card.dart';
 import 'package:flutter/material.dart';
 
-class CategoryListScreen extends StatefulWidget {
-  const CategoryListScreen({super.key});
+class PopularScreen extends StatefulWidget {
+  const PopularScreen({super.key});
 
   @override
-  State<CategoryListScreen> createState() => _CategoryListScreenState();
+  State<PopularScreen> createState() => _PopularScreenState();
 }
 
-class _CategoryListScreenState extends State<CategoryListScreen> {
+class _PopularScreenState extends State<PopularScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 4,
         backgroundColor: Colors.white,
         title: const Text(
-          'Categories',
+          'Popular',
           style: TextStyle(color: Colors.black),
         ),
         leading: const BackButton(
@@ -23,13 +24,13 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, mainAxisSpacing: 16, crossAxisSpacing: 16),
-            itemCount: 10,
+                crossAxisCount: 2, mainAxisSpacing: 8, crossAxisSpacing: 8),
+            itemCount: 20,
             itemBuilder: (context, index) {
-              return const FittedBox(child: CategoryCard());
+              return const FittedBox(child: ProductCard());
             }),
       ),
     );
