@@ -7,4 +7,8 @@ class BottomNavController extends GetxController {
     CurrentSelectedIndex = index;
     update();
   }
+
+  void backtohome() {
+    ChnageScreen(0);
+  }
 }

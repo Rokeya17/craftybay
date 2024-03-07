@@ -24,7 +24,7 @@ class _WishListScreenState extends State<WishListScreen> {
         ),
         leading: IconButton(
           onPressed: () {
-            Get.find<BottomNavController>().ChnageScreen(0);
+            Get.find<BottomNavController>().backtohome();
           },
           icon: const Icon(
             Icons.arrow_back,
