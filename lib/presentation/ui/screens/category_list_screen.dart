@@ -1,5 +1,7 @@
+import 'package:craftybay/presentation/state_holders/nav_bottom_controller.dart';
 import 'package:craftybay/presentation/widgets/category_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoryListScreen extends StatefulWidget {
   const CategoryListScreen({super.key});
@@ -18,8 +20,14 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
           'Categories',
           style: TextStyle(color: Colors.black),
         ),
-        leading: const BackButton(
-          color: Colors.black,
+        leading: IconButton(
+          onPressed: () {
+            Get.find<BottomNavController>().ChnageScreen(0);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Padding(
