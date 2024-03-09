@@ -15,9 +15,9 @@ class _WishListScreenState extends State<WishListScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
+      onWillPop: () async {
         Get.find<BottomNavController>().backtohome();
-        return false ;
+        return false;
       },
       child: Scaffold(
         appBar: AppBar(

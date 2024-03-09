@@ -1,4 +1,3 @@
-import 'package:craftybay/presentation/ui/screens/category_list_screen.dart';
 import 'package:craftybay/presentation/ui/screens/new_product_screen.dart';
 import 'package:craftybay/presentation/ui/screens/popular_product_screen.dart';
 import 'package:craftybay/presentation/ui/screens/special_product_screen.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../state_holders/nav_bottom_controller.dart';
 import '../../utility/image_assets.dart';
 import '../../widgets/circular_iconbutton.dart';
 import '../../widgets/home/product_card.dart';
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const HomeSlider(),
               SectionHeader(
                 onTap: () {
-                  Get.to(const CategoryListScreen());
+                  Get.find<BottomNavController>().ChnageScreen(1);
                 },
                 title: 'Categories',
               ),
