@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import '../../utility/app_colors.dart';
 
 class ProductImageSlider extends StatefulWidget {
   const ProductImageSlider({super.key});
@@ -20,7 +19,7 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
           options: CarouselOptions(
               height: 260.0,
               autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 3),
+              viewportFraction: 1,
               onPageChanged: (int page, _) {
                 _selectedSlider.value = page;
               }),
@@ -28,13 +27,9 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: const BoxDecoration(color: Colors.blue),
-                    child: Text(
-                      'text $i',
-                      style: const TextStyle(fontSize: 16.0),
-                    ));
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(color: Colors.grey),
+                );
               },
             );
           }).toList(),
@@ -52,11 +47,11 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
                     Container(
                       height: 10,
                       width: 10,
-                      margin: const EdgeInsets.symmetric(horizontal: 1.5),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10),
-                          color: value == i ? AppColors.primaryColor : null),
+                          color: value == i
+                              ? AppColors.primaryColor
+                              : Colors.white),
                     ),
                   );
                 }
