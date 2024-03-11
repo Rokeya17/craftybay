@@ -67,6 +67,9 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
               ),
             ],
           ),
+          Row(
+            children: [Text('Addidas shoe')],
+          )
         ],
       ),
     );
