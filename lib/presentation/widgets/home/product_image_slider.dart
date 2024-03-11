@@ -14,11 +14,11 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
   final ValueNotifier<int> _selectedSlider = ValueNotifier(0);
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
         CarouselSlider(
           options: CarouselOptions(
-              height: 200.0,
+              height: 260.0,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 3),
               onPageChanged: (int page, _) {
@@ -39,33 +39,34 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
             );
           }).toList(),
         ),
-        const SizedBox(
-          height: 16,
-        ),
-        ValueListenableBuilder(
-            valueListenable: _selectedSlider,
-            builder: (context, value, _) {
-              List<Widget> list = [];
+        Positioned(
+          bottom: 10,
+          left: 0,
+          right: 0,
+          child: ValueListenableBuilder(
+              valueListenable: _selectedSlider,
+              builder: (context, value, _) {
+                List<Widget> list = [];
+                for (int i = 0; i < 3; i++) {
+                  list.add(
+                    Container(
+                      height: 10,
+                      width: 10,
+                      margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                          color: value == i ? AppColors.primaryColor : null),
+                    ),
+                  );
+                }
 
-              for (int i = 0; i < 3; i++) {
-                list.add(
-                  Container(
-                    height: 10,
-                    width: 10,
-                    margin: const EdgeInsets.symmetric(horizontal: 1.5),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10),
-                        color: value == i ? AppColors.primaryColor : null),
-                  ),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: list,
                 );
-              }
-
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: list,
-              );
-            }),
+              }),
+        ),
       ],
     );
   }
