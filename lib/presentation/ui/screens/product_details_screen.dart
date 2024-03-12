@@ -15,6 +15,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          const ProductImageSlider(),
           AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -22,24 +23,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               color: Colors.blue,
             ),
           ),
-          const ProductImageSlider(),
-          SizedBox(
-            height: 8,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Nike Air shoe 270',
-                style: TextStyle(fontSize: 20, color: Colors.blueGrey),
-              ),
-              CustomStepper(
-                  lowerLimit: 1,
-                  upperLimit: 10,
-                  stepValue: 1,
-                  value: 1,
-                  onChange: (newValue) {}),
-            ],
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Nike Air shoe 270',
+                  style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+                ),
+                CustomStepper(
+                    lowerLimit: 1,
+                    upperLimit: 10,
+                    stepValue: 1,
+                    value: 1,
+                    onChange: (newValue) {}),
+              ],
+            ),
           ),
         ],
       ),
