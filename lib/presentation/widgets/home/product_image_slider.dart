@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:count_stepper/count_stepper.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -67,9 +68,19 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
               ),
             ],
           ),
-          Row(
-            children: [Text('Addidas shoe')],
-          )
+          const SizedBox(
+            height: 8,
+          ),
+          const Row(children: [
+            Text(
+              'Nike Air Max 270',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                  color: Colors.black54),
+            ),
+            CountStepper(),
+          ])
         ],
       ),
     );

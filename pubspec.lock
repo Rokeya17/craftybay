@@ -57,6 +57,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.2"
+  count_stepper:
+    dependency: "direct main"
+    description:
+      name: count_stepper
+      sha256: "5219dcb890b0a9b0bf4609c944491f25ccf4807e2058be1772d5a703929124be"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   cupertino_icons:
     dependency: "direct main"
     description:
