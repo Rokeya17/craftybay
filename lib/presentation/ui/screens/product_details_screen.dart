@@ -12,13 +12,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: const BackButton(
-            color: Colors.blue,
+      body: Stack(
+        children: [
+          AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leading: const BackButton(
+              color: Colors.blue,
+            ),
           ),
-        ),
-        body: const ProductImageSlider());
+          const ProductImageSlider(),
+        ],
+      ),
+    );
   }
 }

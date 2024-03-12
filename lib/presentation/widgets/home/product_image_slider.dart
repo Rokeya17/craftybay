@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
-import 'package:craftybay/presentation/widgets/custom_stepper.dart';
 import 'package:flutter/material.dart';
 
 class ProductImageSlider extends StatefulWidget {
@@ -81,14 +80,6 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
                     color: Colors.black54),
               ),
             ],
-            CustomStepper(
-                lowerLimit: 1,
-                upperLimit: 10,
-                stepValue: 1,
-                value: 1,
-                onChange: (newValue) {
-                  print(newValue);
-                }),
           )
         ],
       ),
