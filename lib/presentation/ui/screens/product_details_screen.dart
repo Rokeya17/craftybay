@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/widgets/custom_stepper.dart';
 import 'package:craftybay/presentation/widgets/home/product_image_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,24 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
           ),
           const ProductImageSlider(),
+          SizedBox(
+            height: 8,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Nike Air shoe 270',
+                style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+              ),
+              CustomStepper(
+                  lowerLimit: 1,
+                  upperLimit: 10,
+                  stepValue: 1,
+                  value: 1,
+                  onChange: (newValue) {}),
+            ],
+          ),
         ],
       ),
     );

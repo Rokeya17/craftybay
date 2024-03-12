@@ -67,20 +67,6 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          const Row(
-            children: [
-              Text(
-                'Nike Air Max 270',
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    color: Colors.black54),
-              ),
-            ],
-          )
         ],
       ),
     );
