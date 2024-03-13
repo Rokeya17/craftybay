@@ -52,7 +52,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Icons.star,
                       color: Colors.amber,
                     ),
-                    Text('4.8'),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      '4.8',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      'Reviews',
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    )
                   ],
                 )
               ],
