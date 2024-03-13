@@ -16,83 +16,87 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                const ProductImageSlider(),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    leading: const BackButton(
-                      color: Colors.white,
-                    ),
-                  ),
+        body: SafeArea(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              const ProductImageSlider(),
+              AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                leading: const BackButton(
+                  color: Colors.white,
                 ),
-              ],
-            ),
-            Row(
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
               children: [
-                const Text(
-                  'Nike Air shoe 270',
-                  style: TextStyle(fontSize: 20, color: Colors.blueGrey),
-                ),
-                const Spacer(),
-                CustomStepper(
-                    lowerLimit: 1,
-                    upperLimit: 10,
-                    stepValue: 1,
-                    value: 1,
-                    onChange: (newValue) {}),
-              ],
-            ),
-            Row(
-              children: [
-                const Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 18,
-                      ),
-                      Text(
-                        '4.5',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ]),
-                TextButton(
-                  onPressed: () {
-                    Get.to(const DisplayReviewScreen());
-                  },
+                Expanded(
                   child: const Text(
-                    'REVIEW',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    'Nike Air shoe 270',
+                    style: TextStyle(fontSize: 20, color: Colors.blueGrey),
                   ),
                 ),
-                const Card(
-                  color: Colors.white54,
-                  child: Padding(
-                    padding: EdgeInsets.all(2.0),
-                    child: Icon(
-                      Icons.favorite,
-                      color: Colors.red,
-                      size: 16,
-                    ),
-                  ),
-                )
+                Row(
+                  children: [
+                    CustomStepper(
+                        lowerLimit: 1,
+                        upperLimit: 10,
+                        stepValue: 1,
+                        value: 1,
+                        onChange: (newValue) {}),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+          Row(
+            children: [
+              const Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 18,
+                    ),
+                    Text(
+                      '4.5',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ]),
+              TextButton(
+                onPressed: () {
+                  Get.to(const DisplayReviewScreen());
+                },
+                child: const Text(
+                  'Reviews',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              const Card(
+                color: Colors.white54,
+                child: Padding(
+                  padding: EdgeInsets.all(2.0),
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.red,
+                    size: 16,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
       ),
-    );
+    ));
   }
 }
