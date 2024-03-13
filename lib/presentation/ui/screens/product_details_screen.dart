@@ -13,34 +13,55 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const ProductImageSlider(),
-          AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            leading: const BackButton(
-              color: Colors.blue,
-            ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  const ProductImageSlider(),
+                  AppBar(
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    leading: const BackButton(
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Nike Air shoe 270',
+                    style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+                  ),
+                  const Spacer(),
+                  CustomStepper(
+                      lowerLimit: 1,
+                      upperLimit: 10,
+                      stepValue: 1,
+                      value: 1,
+                      onChange: (newValue) {}),
+                ],
+              ),
+              const Row(
+                children: [
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      Text('4.8'),
+                    ],
+                  )
+                ],
+              ),
+            ],
           ),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Nike Air shoe 270',
-                  style: TextStyle(fontSize: 20, color: Colors.blueGrey),
-                ),
-                CustomStepper(
-                    lowerLimit: 1,
-                    upperLimit: 10,
-                    stepValue: 1,
-                    value: 1,
-                    onChange: (newValue) {}),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
