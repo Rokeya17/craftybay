@@ -1,4 +1,6 @@
+import 'package:craftybay/presentation/ui/screens/display_review_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CreateReviewScreen extends StatefulWidget {
   const CreateReviewScreen({super.key});
@@ -42,10 +44,13 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                 minLines: 10,
               ),
               TextButton(
-                style: const ButtonStyle(
-                  alignment: Alignment.center,
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(DisplayReviewScreen());
+                },
                 child: const Text(
                   'Submit',
                   style: TextStyle(color: Colors.white),
