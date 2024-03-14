@@ -1,6 +1,7 @@
-import 'package:craftybay/presentation/ui/screens/create_review_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'create_review_screen.dart';
 
 class DisplayReviewScreen extends StatelessWidget {
   const DisplayReviewScreen({super.key});
@@ -14,7 +15,7 @@ class DisplayReviewScreen extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
               onPressed: () {
-                Get.to(CreateReviewScreen());
+                Get.to(const CreateReviewScreen());
               },
               child: const Icon(Icons.add)),
         ));
