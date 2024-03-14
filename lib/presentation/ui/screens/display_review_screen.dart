@@ -1,7 +1,6 @@
+import 'package:craftybay/presentation/ui/screens/create_review_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'create_review_screen.dart';
 
 class DisplayReviewScreen extends StatelessWidget {
   const DisplayReviewScreen({super.key});
@@ -9,17 +8,15 @@ class DisplayReviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Review'),
-        ),
-        body: Center(
-          child: Stack(children: [
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(const CreateReviewScreen());
-                },
-                child: const Icon(Icons.add)),
-          ]),
-        ));
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text('Review'),
+      ),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Get.to(const CreateReviewScreen());
+          }),
+    );
   }
 }
