@@ -11,11 +11,33 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: BackButton(),
-        title: Text('Create Review'),
-      ),
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: const BackButton(),
+          title: const Text('Create Review'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(label: Text('First Name')),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(label: Text('First Name')),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(label: Text('First Name')),
+                maxLines: 50,
+              )
+            ],
+          ),
+        ));
   }
 }
