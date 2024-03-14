@@ -35,8 +35,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Expanded(
-                  child: const Text(
+                const Expanded(
+                  child: Text(
                     'Nike Air shoe 270',
                     style: TextStyle(fontSize: 20, color: Colors.blueGrey),
                   ),
