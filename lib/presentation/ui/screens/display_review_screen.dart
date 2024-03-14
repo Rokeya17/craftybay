@@ -13,11 +13,13 @@ class DisplayReviewScreen extends StatelessWidget {
           title: const Text('Review'),
         ),
         body: Center(
-          child: ElevatedButton(
-              onPressed: () {
-                Get.to(const CreateReviewScreen());
-              },
-              child: const Icon(Icons.add)),
+          child: Stack(children: [
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(const CreateReviewScreen());
+                },
+                child: const Icon(Icons.add)),
+          ]),
         ));
   }
 }
