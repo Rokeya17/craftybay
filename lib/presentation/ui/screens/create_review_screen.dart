@@ -43,20 +43,19 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                 maxLines: 20,
                 minLines: 10,
               ),
-              TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                ),
-                onPressed: () {
-                  Get.to(DisplayReviewScreen());
-                },
-                child: const Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+    SizedBox(
+    width: double.infinity,
+    child: Visibility(
+    visible: _reviewInProgress == false,
+    replacement: const Center(
+    child: CircularProgressIndicator()),
+    child: ElevatedButton(
+    onPressed: () {
+    _printDataFromField();
+    },
+    child: const Text('Submit'),
             ],
+
           ),
         ),
       ),
