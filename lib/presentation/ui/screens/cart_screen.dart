@@ -71,7 +71,7 @@ class _CartScreenState extends State<CartScreen> {
                             "Checkout",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.normal),
-                          )))
+                          ))),
                 ],
               ),
             ),
