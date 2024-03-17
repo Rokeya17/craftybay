@@ -12,11 +12,11 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create review'),
+        title: const Text('Create review'),
         backgroundColor: Colors.transparent,
-        leading: BackButton(),
+        leading: const BackButton(),
       ),
-      body: Column(),
+      body: const Column(),
     );
   }
 }

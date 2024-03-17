@@ -20,8 +20,7 @@ class _ProductImageSliderState extends State<ProductImageSlider> {
             children: [
               CarouselSlider(
                 options: CarouselOptions(
-                    height: 260.0,
-                    autoPlay: true,
+                    height: 300.0,
                     viewportFraction: 1,
                     onPageChanged: (int page, _) {
                       _selectedSlider.value = page;
