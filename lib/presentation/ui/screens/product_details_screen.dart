@@ -1,4 +1,5 @@
 import 'package:craftybay/presentation/ui/screens/display_review_screen.dart';
+import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:craftybay/presentation/widgets/custom_stepper.dart';
 import 'package:craftybay/presentation/widgets/home/product_image_slider.dart';
 import 'package:flutter/material.dart';
@@ -64,9 +65,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               Text(
                                 'Nike Shoes Air270 Eid Special ',
                                 style: TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.black54,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -129,9 +131,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     const Text(
                       'Color',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -139,26 +142,27 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(
                       height: 25,
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: colors.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                setState(() {
-                                  _selectedColorIndex = index;
-                                });
-                              },
-                              child: CircleAvatar(
-                                backgroundColor: colors[index],
-                                child: _selectedColorIndex == index
-                                    ? const Icon(
-                                        Icons.done,
-                                        color: Colors.white,
-                                      )
-                                    : null,
-                              ),
-                            );
-                          }),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: colors.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectedColorIndex = index;
+                              });
+                            },
+                            child: CircleAvatar(
+                              backgroundColor: colors[index],
+                              child: _selectedColorIndex == index
+                                  ? const Icon(
+                                      Icons.done,
+                                      color: Colors.white,
+                                    )
+                                  : null,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                     const SizedBox(
                       height: 16,
@@ -166,31 +170,67 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     const Text(
                       'Size',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
                     ),
                     SizedBox(
                       height: 25,
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: sizes.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                setState(() {});
-                              },
-                              child: CircleAvatar(
-                                child: _selectedSizesIndex == index
-                                    ? const Icon(
-                                        Icons.done,
-                                        color: Colors.black,
-                                      )
+                        scrollDirection: Axis.horizontal,
+                        itemCount: sizes.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectedSizesIndex = index;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                color: _selectedSizesIndex == index
+                                    ? AppColors.primaryColor
                                     : null,
                               ),
-                            );
-                          }),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 4,
+                                horizontal: 8,
+                              ),
+                              margin: const EdgeInsets.only(right: 8),
+                              child: Text(
+                                sizes[index],
+                                style: TextStyle(
+                                  color: _selectedSizesIndex == index
+                                      ? Colors.white
+                                      : Colors.black,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Text(
+                      'Description',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Text(
+                        'The Nike Air 270 is a revolutionary shoe that combines cutting-edge design with unparalleled comfort and performance. Inspired by the Air Max heritage, the Air 270 features the tallest-ever Max Air unit, providing exceptional cushioning and impact protection with every step. Its sleek silhouette and bold colorways make it a versatile choice for both athletic activities and casual wear. With innovative materials and technologies, the Nike Air 270 delivers a fusion of style and functionality, making it a standout choice for sneaker enthusiasts and athletes alike.')
                   ],
                 ),
               ),
