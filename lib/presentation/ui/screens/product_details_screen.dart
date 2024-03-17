@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/ui/screens/cart_screen.dart';
 import 'package:craftybay/presentation/ui/screens/display_review_screen.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:craftybay/presentation/widgets/custom_stepper.dart';
@@ -31,8 +32,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -59,7 +60,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   children: [
                     Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           child: Column(
                             children: [
                               Text(
@@ -229,8 +230,56 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     const SizedBox(
                       height: 16,
                     ),
-                    const Text(
-                        'The Nike Air 270 is a revolutionary shoe that combines cutting-edge design with unparalleled comfort and performance. Inspired by the Air Max heritage, the Air 270 features the tallest-ever Max Air unit, providing exceptional cushioning and impact protection with every step. Its sleek silhouette and bold colorways make it a versatile choice for both athletic activities and casual wear. With innovative materials and technologies, the Nike Air 270 delivers a fusion of style and functionality, making it a standout choice for sneaker enthusiasts and athletes alike.')
+                    Text(
+                      'The Nike Air 270 is a revolutionary shoe that combines cutting-edge design with unparalleled comfort and performance. Inspired by the Air Max heritage, the Air 270 features the tallest-ever Max Air unit, providing exceptional cushioning and impact protection with every step. Its sleek silhouette and bold colorways make it a versatile choice for both athletic activities and casual wear. With innovative materials and technologies, the Nike Air 270 delivers a fusion of style and functionality, making it a standout choice for sneaker enthusiasts and athletes alike.',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor.withOpacity(0.3),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(16),
+                    topLeft: Radius.circular(16),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Price"),
+                        Text(
+                          "\$204",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 120,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.to(CartScreen());
+                        },
+                        child: const Text(
+                          "Add to Cart",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
