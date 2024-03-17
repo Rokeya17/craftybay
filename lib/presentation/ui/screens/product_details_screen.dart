@@ -12,11 +12,19 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  List<Color> colors = [
+    Colors.black,
+    Colors.blue,
+    Colors.amber,
+    Colors.green,
+  ];
+  int _selectedcolors =0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
@@ -93,13 +101,37 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ),
                       ),
-                      Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                        size: 20,
+                      const Card(
+                        color: Colors.white54,
+                        child: Padding(
+                          padding: EdgeInsets.all(2.0),
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                            size: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),
+                  const Text(
+                    'Color',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 20,
+                    child: ListView.builder(
+                        itemCount: colors.length,
+                        itemBuilder: (context, index) {
+                          return const CircleAvatar(
+                          backgroundColor: colors[index],
+                            child: ,
+                          );
+                        }),
+                  )
                 ],
               ),
             ),
