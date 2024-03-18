@@ -60,7 +60,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   children: [
                     Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Column(
                             children: [
                               Text(
@@ -230,7 +230,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     const SizedBox(
                       height: 16,
                     ),
-                    Text(
+                    const Text(
                       'The Nike Air 270 is a revolutionary shoe that combines cutting-edge design with unparalleled comfort and performance. Inspired by the Air Max heritage, the Air 270 features the tallest-ever Max Air unit, providing exceptional cushioning and impact protection with every step. Its sleek silhouette and bold colorways make it a versatile choice for both athletic activities and casual wear. With innovative materials and technologies, the Nike Air 270 delivers a fusion of style and functionality, making it a standout choice for sneaker enthusiasts and athletes alike.',
                       style: TextStyle(
                         color: Colors.black,
@@ -253,7 +253,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Price"),
