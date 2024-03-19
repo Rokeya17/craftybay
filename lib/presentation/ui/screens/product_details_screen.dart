@@ -1,4 +1,3 @@
-import 'package:craftybay/presentation/ui/screens/cart_screen.dart';
 import 'package:craftybay/presentation/ui/screens/display_review_screen.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:craftybay/presentation/widgets/custom_stepper.dart';
@@ -244,12 +243,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryColor.withOpacity(0.3),
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(16),
-                    topLeft: Radius.circular(16),
-                  ),
-                ),
+                    color: AppColors.primaryColor.withOpacity(0.3),
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(16),
+                        topLeft: Radius.circular(16))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -257,29 +254,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Price"),
-                        Text(
-                          "\$204",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
+                        Text("\$204",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.primaryColor)),
                       ],
                     ),
                     SizedBox(
-                      width: 120,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Get.to(CartScreen());
-                        },
-                        child: const Text(
-                          "Add to Cart",
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.normal),
-                        ),
-                      ),
-                    ),
+                        width: 120,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(
+                              "Add to Cart",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.normal),
+                            )))
                   ],
                 ),
               ),

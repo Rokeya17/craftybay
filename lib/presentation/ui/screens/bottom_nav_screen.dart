@@ -20,7 +20,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const CategoryListScreen(),
-    CartScreen(),
+    const CartScreen(),
     const WishListScreen(),
   ];
   @override
