@@ -45,10 +45,19 @@ class _CartScreenState extends State<CartScreen> {
                         color: AppColors.primaryColor,
                         child: Column(
                           children: [
-                            const Text('Nike shoes'),
+                            Row(
+                              children: [
+                                const Text('Nike shoes'),
+                              ],
+                            ),
                             RichText(
-                                text: const TextSpan(
-                                    style: TextStyle(color: Colors.black)))
+                              text: const TextSpan(
+                                  style: TextStyle(color: Colors.black),
+                                  children: [
+                                    TextSpan(text: 'color:blue'),
+                                    TextSpan(text: 'color:blue')
+                                  ]),
+                            ),
                           ],
                         ),
                       ),
