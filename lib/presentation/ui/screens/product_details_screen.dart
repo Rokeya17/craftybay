@@ -1,281 +1,203 @@
-import 'package:craftybay/presentation/ui/screens/display_review_screen.dart';
-import 'package:craftybay/presentation/utility/app_colors.dart';
-import 'package:craftybay/presentation/widgets/custom_stepper.dart';
-import 'package:craftybay/presentation/widgets/home/product_image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utility/app_colors.dart';
+import '../../widgets/custom_stepper.dart';
+import '../../widgets/home/product_image_slider.dart';
+import 'display_review_screen.dart';
+
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({Key? key}) : super(key: key);
+  const ProductDetailsScreen({super.key});
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  List<Color> colors = [
-    Colors.black,
-    Colors.blue,
+  List<Color> colorsList = [
+    Colors.deepOrange,
     Colors.amber,
-    Colors.green,
+    Colors.blue,
+    Colors.yellow,
+    Colors.pink,
   ];
-  List<String> sizes = [
-    '37',
-    '38',
-    '39',
-    '40',
-  ];
-  int _selectedColorIndex = 0;
-  int _selectedSizesIndex = 0;
+
+  List<String> sizes = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  const ProductImageSlider(),
-                  AppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    title: const Text(
-                      'Product Details',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    leading: const BackButton(
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+        body: SafeArea(
+      child: Column(
+        children: [
+          productDetailsAppBar,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
                         const Expanded(
-                          child: Column(
-                            children: [
-                              Text(
-                                'Nike Shoes Air270 Eid Special ',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                            child: Text(
+                          "Adidas shoe sdfs dsfsadgs vsdgsa asdgewgfdsf sdfgsdgr ytjtyu",
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                           ),
-                        ),
-                        CustomStepper(
-                          lowerLimit: 1,
-                          upperLimit: 20,
-                          stepValue: 1,
-                          value: 1,
-                          onChange: (newValue) {},
+                        )),
+                        Row(
+                          children: [
+                            CustomStepper(
+                              lowerLimit: 1,
+                              upperLimit: 10,
+                              stepValue: 1,
+                              value: 1,
+                              onChange: (newValue) {},
+                            ),
+                          ],
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 20,
-                        ),
-                        const Text(
-                          '4.8',
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 16,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 8,
+                        const Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.amber,
+                            ),
+                            Text(
+                              '4.5',
+                              style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.blueGrey),
+                            ),
+                          ],
                         ),
                         TextButton(
                           onPressed: () {
                             Get.to(const DisplayReviewScreen());
                           },
                           child: const Text(
-                            'Reviews',
+                            'REVIEW',
                             style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                            ),
+                                fontSize: 13,
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                         const Card(
-                          color: Colors.white54,
+                          color: AppColors.primaryColor,
                           child: Padding(
                             padding: EdgeInsets.all(2.0),
                             child: Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                              size: 16,
+                              Icons.favorite_border,
+                              size: 12,
+                              color: Colors.white,
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
+                    const Text(
+                      "Color",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
                     const SizedBox(
-                      height: 16,
+                      height: 8,
+                    ),
+                    const SizedBox(
+                      height: 18,
                     ),
                     const Text(
-                      'Color',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),
+                      "Size",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
-                      height: 16,
-                    ),
-                    SizedBox(
-                      height: 25,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: colors.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              setState(() {
-                                _selectedColorIndex = index;
-                              });
-                            },
-                            child: CircleAvatar(
-                              backgroundColor: colors[index],
-                              child: _selectedColorIndex == index
-                                  ? const Icon(
-                                      Icons.done,
-                                      color: Colors.white,
-                                    )
-                                  : null,
-                            ),
-                          );
-                        },
-                      ),
+                      height: 8,
                     ),
                     const SizedBox(
-                      height: 16,
+                      height: 18,
                     ),
                     const Text(
-                      'Size',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),
+                      "Description",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
-                      height: 16,
-                    ),
-                    SizedBox(
-                      height: 25,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: sizes.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              setState(() {
-                                _selectedSizesIndex = index;
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                color: _selectedSizesIndex == index
-                                    ? AppColors.primaryColor
-                                    : null,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4,
-                                horizontal: 8,
-                              ),
-                              margin: const EdgeInsets.only(right: 8),
-                              child: Text(
-                                sizes[index],
-                                style: TextStyle(
-                                  color: _selectedSizesIndex == index
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    const Text(
-                      'Description',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    const Text(
-                      'The Nike Air 270 is a revolutionary shoe that combines cutting-edge design with unparalleled comfort and performance. Inspired by the Air Max heritage, the Air 270 features the tallest-ever Max Air unit, providing exceptional cushioning and impact protection with every step. Its sleek silhouette and bold colorways make it a versatile choice for both athletic activities and casual wear. With innovative materials and technologies, the Nike Air 270 delivers a fusion of style and functionality, making it a standout choice for sneaker enthusiasts and athletes alike.',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
+                      height: 8,
                     ),
                   ],
                 ),
               ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                    color: AppColors.primaryColor.withOpacity(0.3),
-                    borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(16),
-                        topLeft: Radius.circular(16))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Price"),
-                        Text("\$204",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryColor)),
-                      ],
-                    ),
-                    SizedBox(
-                        width: 120,
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "Add to Cart",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.normal),
-                            )))
-                  ],
-                ),
-              ),
-            ],
+            ),
+          ),
+          addToCartButtonContainer,
+        ],
+      ),
+    ));
+  }
+
+  Stack get productDetailsAppBar {
+    return Stack(
+      children: [
+        const ProductImageSlider(),
+        AppBar(
+          title: const Text(
+            "Product Details",
+            style: TextStyle(color: Colors.black54),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: const BackButton(
+            color: Colors.black,
           ),
         ),
+      ],
+    );
+  }
+
+  Container get addToCartButtonContainer {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+          color: AppColors.primaryColor.withOpacity(0.3),
+          borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(16), topLeft: Radius.circular(16))),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Price"),
+              Text("\$204",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryColor)),
+            ],
+          ),
+          SizedBox(
+              width: 120,
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Add to Cart",
+                    style:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                  )))
+        ],
       ),
     );
   }
