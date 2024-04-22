@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../utility/app_colors.dart';
 import '../../widgets/custom_stepper.dart';
 import '../../widgets/home/product_image_slider.dart';
-import 'display_review_screen.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+  _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
@@ -24,141 +22,43 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   List<String> sizes = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
+  int _selectedColorIndex = 0;
+  int _selectedSizeIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
-        children: [
-          productDetailsAppBar,
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Expanded(
-                            child: Text(
-                          "kjjfiodjfippkrfgorkfrjwfokrf;gmk.jrgpofdklrf,mgvkjre",
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        )),
-                        Row(
-                          children: [
-                            CustomStepper(
-                              lowerLimit: 1,
-                              upperLimit: 10,
-                              stepValue: 1,
-                              value: 1,
-                              onChange: (newValue) {},
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Colors.amber,
-                            ),
-                            Text(
-                              '4.5',
-                              style: TextStyle(
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.blueGrey),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Get.to(const DisplayReviewScreen());
-                          },
-                          child: const Text(
-                            'REVIEW',
-                            style: TextStyle(
-                                fontSize: 13,
-                                color: AppColors.primaryColor,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                        const Card(
-                          color: AppColors.primaryColor,
-                          child: Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: Icon(
-                              Icons.favorite_border,
-                              size: 12,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      "Short Description",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning.",
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      "Size Chart",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: sizes
-                          .map((size) => Container(
-                                alignment: Alignment.center,
-                                width: 40,
-                                height: 40,
-                                margin: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Text(size),
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      "Description",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(height: 8),
-                  ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            _buildProductDetailsAppBar(),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildProductDetailsHeader(),
+                      const SizedBox(height: 20),
+                      _buildShortDescription(),
+                      const SizedBox(height: 8),
+                      _buildColorPalette(),
+                      const SizedBox(height: 8),
+                      _buildSizeChart(),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          addToCartButtonContainer,
-        ],
+            _buildAddToCartButtonContainer(),
+          ],
+        ),
       ),
-    ));
+    );
   }
 
-  Stack get productDetailsAppBar {
+  Widget _buildProductDetailsAppBar() {
     return Stack(
       children: [
         const ProductImageSlider(),
@@ -169,21 +69,153 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: const BackButton(
-            color: Colors.black,
-          ),
+          leading: const BackButton(color: Colors.black),
         ),
       ],
     );
   }
 
-  Container get addToCartButtonContainer {
+  Widget _buildProductDetailsHeader() {
+    return Row(
+      children: [
+        const Expanded(
+          child: Text(
+            "Nike Air 200 ",
+            maxLines: 2,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        Row(
+          children: [
+            CustomStepper(
+              lowerLimit: 1,
+              upperLimit: 10,
+              stepValue: 1,
+              value: 1,
+              onChange: (newValue) {},
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShortDescription() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Description",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+        SizedBox(height: 8),
+        Text(
+          "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning.",
+          style: TextStyle(fontSize: 14),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildColorPalette() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Colors",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: colorsList.asMap().entries.map((entry) {
+            final index = entry.key;
+            final color = entry.value;
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  _selectedColorIndex = index;
+                });
+              },
+              child: Container(
+                margin: const EdgeInsets.only(right: 8.0),
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: color,
+                  border: Border.all(
+                    color: _selectedColorIndex == index
+                        ? Colors.blue
+                        : Colors.transparent,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSizeChart() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Size ",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: sizes.asMap().entries.map((entry) {
+            final index = entry.key;
+            final size = entry.value;
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  _selectedSizeIndex = index;
+                });
+              },
+              child: Container(
+                alignment: Alignment.center,
+                width: 40,
+                height: 40,
+                margin: const EdgeInsets.only(right: 10),
+                decoration: BoxDecoration(
+                  color: _selectedSizeIndex == index
+                      ? colorsList[_selectedColorIndex]
+                      : Colors.grey[300],
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    color: _selectedSizeIndex == index
+                        ? Colors.blue
+                        : Colors.transparent,
+                    width: 2.0,
+                  ),
+                ),
+                child: Text(size),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAddToCartButtonContainer() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-          color: AppColors.primaryColor.withOpacity(0.3),
-          borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(16), topLeft: Radius.circular(16))),
+        color: AppColors.primaryColor.withOpacity(0.3),
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(16),
+          topLeft: Radius.circular(16),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -191,22 +223,26 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Price"),
-              Text("\$204",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.primaryColor)),
+              Text(
+                "\$204",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primaryColor,
+                ),
+              ),
             ],
           ),
           SizedBox(
-              width: 120,
-              child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Add to Cart",
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
-                  )))
+            width: 120,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Text(
+                "Add to Cart",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+              ),
+            ),
+          ),
         ],
       ),
     );

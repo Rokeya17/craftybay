@@ -14,7 +14,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(const ProductDetailsScreen());
+        Get.to(ProductDetailsScreen());
       },
       child: Card(
         shadowColor: AppColors.primaryColor.withOpacity(0.1),
