@@ -107,36 +107,46 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         )
                       ],
                     ),
+                    const SizedBox(height: 20),
                     const Text(
-                      "Color",
+                      "Short Description",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    const SizedBox(
-                      height: 18,
-                    ),
+                    const SizedBox(height: 8),
                     const Text(
-                      "Size",
+                      "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning.",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Size Chart",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
-                    const SizedBox(
-                      height: 8,
+                    const SizedBox(height: 8),
+                    Row(
+                      children: sizes
+                          .map((size) => Container(
+                                alignment: Alignment.center,
+                                width: 40,
+                                height: 40,
+                                margin: const EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Text(size),
+                              ))
+                          .toList(),
                     ),
-                    const SizedBox(
-                      height: 18,
-                    ),
+                    const SizedBox(height: 20),
                     const Text(
                       "Description",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
+                    const SizedBox(height: 8),
                   ],
                 ),
               ),
