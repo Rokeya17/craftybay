@@ -42,7 +42,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       children: [
                         const Expanded(
                             child: Text(
-                          "Adidas shoe sdfs dsfsadgs vsdgsa asdgewgfdsf sdfgsdgr ytjtyu",
+                          "kjjfiodjfippkrfgorkfrjwfokrf;gmk.jrgpofdklrf,mgvkjre",
                           maxLines: 2,
                           style: TextStyle(
                             fontSize: 15,

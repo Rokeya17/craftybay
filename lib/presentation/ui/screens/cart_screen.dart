@@ -35,36 +35,30 @@ class _CartScreenState extends State<CartScreen> {
         body: Column(
           children: [
             Expanded(
-              child: Column(
-                children: [
-                  Row(
+              child: Column(children: [
+                Container(
+                  height: 100,
+                  width: 90,
+                  color: AppColors.primaryColor,
+                  child: Column(
                     children: [
-                      Container(
-                        height: 100,
-                        width: 90,
-                        color: AppColors.primaryColor,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                const Text('Nike shoes'),
-                              ],
-                            ),
-                            RichText(
-                              text: const TextSpan(
-                                  style: TextStyle(color: Colors.black),
-                                  children: [
-                                    TextSpan(text: 'color:blue'),
-                                    TextSpan(text: 'color:blue')
-                                  ]),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          const Text('Nike shoes'),
+                        ],
+                      ),
+                      RichText(
+                        text: const TextSpan(
+                            style: TextStyle(color: Colors.black),
+                            children: [
+                              TextSpan(text: 'color:blue'),
+                              TextSpan(text: 'color:blue')
+                            ]),
                       ),
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ]),
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
