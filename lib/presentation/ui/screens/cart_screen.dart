@@ -1,9 +1,9 @@
-import 'package:craftybay/presentation/widgets/custom_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../state_holders/nav_bottom_controller.dart';
 import '../../utility/app_colors.dart';
+import '../../widgets/cart_product_card.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -36,79 +36,11 @@ class _CartScreenState extends State<CartScreen> {
         body: Column(
           children: [
             Expanded(
-              child: Column(children: [
-                Card(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 90,
-                        color: AppColors.primaryColor,
-                      ),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'Nike shoes',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      RichText(
-                                        text: const TextSpan(
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                            children: [
-                                              TextSpan(text: 'color:blue'),
-                                              TextSpan(text: 'Size:XL')
-                                            ]),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const Spacer(),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.delete),
-                                  color: Colors.red,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  "\$100",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
-                                ),
-                                const Spacer(),
-                                CustomStepper(
-                                    lowerLimit: 1,
-                                    upperLimit: 10,
-                                    stepValue: 1,
-                                    value: 1,
-                                    onChange: (int value) {})
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ]),
-            ),
+                child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      return const CartProductScreen();
+                    })),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
