@@ -30,183 +30,182 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildProductDetailsAppBar(),
+            // AppBar
+            AppBar(
+              title: const Text(
+                "Product Details",
+                style: TextStyle(color: Colors.black54),
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: const BackButton(color: Colors.black),
+            ),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildProductDetailsHeader(),
-                      const SizedBox(height: 20),
-                      _buildShortDescription(),
-                      const SizedBox(height: 8),
-                      _buildColorPalette(),
-                      const SizedBox(height: 8),
-                      _buildSizeChart(),
-                    ],
-                  ),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const ProductImageSlider(),
+                    const SizedBox(height: 16),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              "Nike Air 200 ",
+                              maxLines: 2,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          CustomStepper(
+                            lowerLimit: 1,
+                            upperLimit: 10,
+                            stepValue: 1,
+                            value: 1,
+                            onChange: (newValue) {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Description",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning.",
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Colors",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: colorsList.asMap().entries.map((entry) {
+                              final index = entry.key;
+                              final color = entry.value;
+                              return GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedColorIndex = index;
+                                  });
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(right: 8.0),
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: color,
+                                    border: Border.all(
+                                      color: _selectedColorIndex == index
+                                          ? Colors.blue
+                                          : Colors.transparent,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    productSize,
+                  ],
                 ),
               ),
             ),
-            _buildAddToCartButtonContainer(),
+
+            carttocartbottomcontainer,
           ],
         ),
       ),
     );
   }
 
-  Widget _buildProductDetailsAppBar() {
-    return Stack(
-      children: [
-        const ProductImageSlider(),
-        AppBar(
-          title: const Text(
-            "Product Details",
-            style: TextStyle(color: Colors.black54),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: const BackButton(color: Colors.black),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildProductDetailsHeader() {
-    return Row(
-      children: [
-        const Expanded(
-          child: Text(
-            "Nike Air 200 ",
-            maxLines: 2,
+  Padding get productSize {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Size",
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
           ),
-        ),
-        Row(
-          children: [
-            CustomStepper(
-              lowerLimit: 1,
-              upperLimit: 10,
-              stepValue: 1,
-              value: 1,
-              onChange: (newValue) {},
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildShortDescription() {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Description",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 8),
-        Text(
-          "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning.",
-          style: TextStyle(fontSize: 14),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildColorPalette() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "Colors",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: colorsList.asMap().entries.map((entry) {
-            final index = entry.key;
-            final color = entry.value;
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedColorIndex = index;
-                });
-              },
-              child: Container(
-                margin: const EdgeInsets.only(right: 8.0),
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: color,
-                  border: Border.all(
-                    color: _selectedColorIndex == index
-                        ? Colors.blue
-                        : Colors.transparent,
-                    width: 2.0,
-                  ),
-                ),
-              ),
-            );
-          }).toList(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSizeChart() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "Size ",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: sizes.asMap().entries.map((entry) {
-            final index = entry.key;
-            final size = entry.value;
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedSizeIndex = index;
-                });
-              },
-              child: Container(
-                alignment: Alignment.center,
-                width: 40,
-                height: 40,
-                margin: const EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                  color: _selectedSizeIndex == index
-                      ? colorsList[_selectedColorIndex]
-                      : Colors.grey[300],
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
+          const SizedBox(height: 8),
+          Row(
+            children: sizes.asMap().entries.map((entry) {
+              final index = entry.key;
+              final size = entry.value;
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _selectedSizeIndex = index;
+                  });
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 40,
+                  height: 40,
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
                     color: _selectedSizeIndex == index
-                        ? Colors.blue
-                        : Colors.transparent,
-                    width: 2.0,
+                        ? colorsList[_selectedColorIndex]
+                        : Colors.grey[300],
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: _selectedSizeIndex == index
+                          ? Colors.blue
+                          : Colors.transparent,
+                      width: 2.0,
+                    ),
                   ),
+                  child: Text(size),
                 ),
-                child: Text(size),
-              ),
-            );
-          }).toList(),
-        ),
-      ],
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildAddToCartButtonContainer() {
+  Container get carttocartbottomcontainer {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
@@ -239,7 +238,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               onPressed: () {},
               child: const Text(
                 "Add to Cart",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ),
           ),
