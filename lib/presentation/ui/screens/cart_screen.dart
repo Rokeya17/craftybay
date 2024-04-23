@@ -46,6 +46,7 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                       Expanded(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +56,7 @@ class _CartScreenState extends State<CartScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text('Nike shoes'),
+                                      const Text('Nike shoes'),
                                       RichText(
                                         text: const TextSpan(
                                             style:
@@ -68,10 +69,10 @@ class _CartScreenState extends State<CartScreen> {
                                     ],
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 IconButton(
                                   onPressed: () {},
-                                  icon: Icon(Icons.delete),
+                                  icon: const Icon(Icons.delete),
                                 ),
                               ],
                             ),
