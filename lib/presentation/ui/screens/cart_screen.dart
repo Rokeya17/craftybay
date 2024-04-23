@@ -57,7 +57,12 @@ class _CartScreenState extends State<CartScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text('Nike shoes'),
+                                      const Text(
+                                        'Nike shoes',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                       RichText(
                                         text: const TextSpan(
                                             style:
@@ -74,12 +79,20 @@ class _CartScreenState extends State<CartScreen> {
                                 IconButton(
                                   onPressed: () {},
                                   icon: const Icon(Icons.delete),
+                                  color: Colors.red,
                                 ),
                               ],
                             ),
                             Row(
                               children: [
-                                const Text("\$100"),
+                                const Text(
+                                  "\$100",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                                const Spacer(),
                                 CustomStepper(
                                     lowerLimit: 1,
                                     upperLimit: 10,
