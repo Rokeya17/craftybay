@@ -36,24 +36,47 @@ class _CartScreenState extends State<CartScreen> {
           children: [
             Expanded(
               child: Column(children: [
-                Container(
-                  height: 100,
-                  width: 90,
-                  color: AppColors.primaryColor,
-                  child: Column(
+                Card(
+                  child: Row(
                     children: [
-                      Row(
-                        children: [
-                          const Text('Nike shoes'),
-                        ],
+                      Container(
+                        height: 100,
+                        width: 90,
+                        color: AppColors.primaryColor,
                       ),
-                      RichText(
-                        text: const TextSpan(
-                            style: TextStyle(color: Colors.black),
-                            children: [
-                              TextSpan(text: 'color:blue'),
-                              TextSpan(text: 'color:blue')
-                            ]),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Nike shoes'),
+                                      RichText(
+                                        text: const TextSpan(
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                            children: [
+                                              TextSpan(text: 'color:blue'),
+                                              TextSpan(text: 'Size:XL')
+                                            ]),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Spacer(),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.delete),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -73,7 +96,7 @@ class _CartScreenState extends State<CartScreen> {
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Price"),
+                      Text("Total Price"),
                       Text("\$204",
                           style: TextStyle(
                               fontSize: 15,

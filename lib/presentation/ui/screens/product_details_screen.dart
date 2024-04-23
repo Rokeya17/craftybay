@@ -124,7 +124,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Colors",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
