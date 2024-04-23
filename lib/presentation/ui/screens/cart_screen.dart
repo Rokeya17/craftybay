@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/widgets/custom_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -74,6 +75,17 @@ class _CartScreenState extends State<CartScreen> {
                                   onPressed: () {},
                                   icon: const Icon(Icons.delete),
                                 ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Text("\$100"),
+                                CustomStepper(
+                                    lowerLimit: 1,
+                                    upperLimit: 10,
+                                    stepValue: 1,
+                                    value: 1,
+                                    onChange: (int value) {})
                               ],
                             ),
                           ],
