@@ -19,54 +19,56 @@ class _EmailVerificationState extends State<EmailVerification> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 100,
-                ),
-                Center(
-                  child: SvgPicture.asset(
-                    ImageAssets.craftybaylogoSVG,
-                    width: 120,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 100,
                   ),
-                ),
-                const SizedBox(width: 16),
-                Text('Welcome Back',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(fontSize: 24, color: Colors.black)),
-                const SizedBox(height: 16),
-                TextFormField(
-                  controller: _emailTEcontroller,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter your Email',
+                  Center(
+                    child: SvgPicture.asset(
+                      ImageAssets.craftybaylogoSVG,
+                      width: 120,
+                    ),
                   ),
-                  validator: (String? text) {
-                    if (text?.isEmpty ?? true) {
-                      return 'Enter your email address';
-                    } else if (text!.isEmail == false) {
-                      return 'Enter your valid email address';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {
-                          Get.to(const OTPVerification());
-                        }
-                      },
-                      child: const Text('Next')),
-                ),
-              ],
+                  const SizedBox(width: 16),
+                  Text('Welcome Back',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(fontSize: 24, color: Colors.black)),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _emailTEcontroller,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your Email',
+                    ),
+                    validator: (String? text) {
+                      if (text?.isEmpty ?? true) {
+                        return 'Enter your email address';
+                      } else if (text!.isEmail == false) {
+                        return 'Enter your valid email address';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (_formkey.currentState!.validate()) {
+                            Get.to(const OTPVerification());
+                          }
+                        },
+                        child: const Text('Next')),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
