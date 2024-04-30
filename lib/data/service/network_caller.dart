@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:craftybay/application/app.dart';
 import 'package:craftybay/presentation/ui/screens/auth/email_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import '../../application/app.dart';
+import '../../presentation/ui/screens/auth/authcontroller.dart';
 import 'network_response.dart';
 
 class NetworkCaller {
@@ -68,7 +69,7 @@ class NetworkCaller {
   Future<void> gotoLogin() async {
     await AuthController.clear();
     Navigator.pushAndRemoveUntil(
-        CraftyBay.globalKey.currentContext!,
+        CraftyBay.globalKey.currentcontext!,
         MaterialPageRoute(builder: (context) => const EmailVerification()),
         (route) => false);
   }
