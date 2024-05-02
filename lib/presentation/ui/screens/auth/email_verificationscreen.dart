@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/state_holders/email_verification_controller.dart';
 import 'package:craftybay/presentation/ui/screens/auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -59,13 +60,16 @@ class _EmailVerificationState extends State<EmailVerification> {
                   const SizedBox(height: 16),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          if (_formkey.currentState!.validate()) {
-                            Get.to(const OTPVerification());
-                          }
-                        },
-                        child: const Text('Next')),
+                    child: GetBuilder<EmailVerificationController>(
+                        builder: (controller) {
+                      return ElevatedButton(
+                          onPressed: () {
+                            if (_formkey.currentState!.validate()) {
+                              Get.to(const OTPVerification());
+                            }
+                          },
+                          child: const Text('Next'));
+                    }),
                   ),
                 ],
               ),
