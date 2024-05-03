@@ -16,6 +16,7 @@ class EmailVerification extends StatefulWidget {
 class _EmailVerificationState extends State<EmailVerification> {
   final TextEditingController _emailTEcontroller = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,10 +63,28 @@ class _EmailVerificationState extends State<EmailVerification> {
                     width: double.infinity,
                     child: GetBuilder<EmailVerificationController>(
                         builder: (controller) {
+                      if (controller.emailVerificationInProgress) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
                       return ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formkey.currentState!.validate()) {
-                              Get.to(const OTPVerification());
+                              final response = await controller
+                                  .verifyEmail(_emailTEcontroller.text.trim());
+                              if (response) {
+                                Get.to(const OTPVerification());
+                              } else {
+                                if (mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                          'Email Verification failed! Try again?'),
+                                    ),
+                                  );
+                                }
+                              }
                             }
                           },
                           child: const Text('Next'));
