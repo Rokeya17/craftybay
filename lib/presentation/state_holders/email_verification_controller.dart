@@ -16,8 +16,9 @@ class EmailVerificationController extends GetxController {
     _emailVerificationInProgress = false;
     update();
     if(
+
     response.isSuccess
-    ){ __
+    ){
       return true;
     }
     else{
