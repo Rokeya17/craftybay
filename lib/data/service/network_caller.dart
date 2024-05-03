@@ -5,12 +5,14 @@ import 'package:craftybay/presentation/ui/screens/auth/email_verificationscreen.
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-import '../../application/app.dart';
 import '../../presentation/ui/screens/auth/authcontroller.dart';
 import 'network_response.dart';
 
+class CraftyBay {
+  static GlobalKey<NavigatorState> globalKey = GlobalKey<NavigatorState>();
+}
+
 class NetworkCaller {
-  /// get request method
   Future<NetworkResponse> getRequest(String url, {bool isLogin = false}) async {
     try {
       Response response = await get(Uri.parse(url),
@@ -22,7 +24,7 @@ class NetworkCaller {
             true, response.statusCode, jsonDecode(response.body));
       } else if (response.statusCode == 401) {
         if (isLogin) {
-          gotoLogin();
+          await gotoLogin();
         }
       } else {
         return NetworkResponse(false, response.statusCode, null);
@@ -33,7 +35,6 @@ class NetworkCaller {
     return NetworkResponse(false, -1, null);
   }
 
-  /// post request method
   Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
       {bool isLogin = false}) async {
     try {
@@ -54,8 +55,8 @@ class NetworkCaller {
           jsonDecode(response.body),
         );
       } else if (response.statusCode == 401) {
-        if (isLogin == false) {
-          gotoLogin();
+        if (!isLogin) {
+          await gotoLogin();
         }
       } else {
         return NetworkResponse(false, response.statusCode, null);
@@ -69,8 +70,9 @@ class NetworkCaller {
   Future<void> gotoLogin() async {
     await AuthController.clear();
     Navigator.pushAndRemoveUntil(
-        CraftyBay.globalKey.currentcontext!,
-        MaterialPageRoute(builder: (context) => const EmailVerification()),
-        (route) => false);
+      CraftyBay.globalKey.currentState!.context,
+      MaterialPageRoute(builder: (context) => const EmailVerification()),
+      (route) => false,
+    );
   }
 }
