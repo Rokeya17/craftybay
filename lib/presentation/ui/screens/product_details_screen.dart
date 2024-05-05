@@ -89,7 +89,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning.",
+                            "Nike Air cushioning, introduced in the late '70s, revolutionized the industry by providing superior comfort and impact protection. Today, Nike continues to push boundaries with advancements like React foam, Flyknit technology for lightweight and breathable uppers, and Zoom Air for responsive cushioning...",
                             style: TextStyle(fontSize: 14),
                           ),
                         ],
