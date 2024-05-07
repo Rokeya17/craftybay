@@ -32,7 +32,11 @@ class NetworkCaller {
     } catch (e) {
       log(e.toString());
     }
-    return NetworkResponse(false, -1, null);
+    return NetworkResponse(
+      false,
+      -1,
+      null,
+    );
   }
 
   Future<NetworkResponse> postRequest(String url, Map<String, dynamic> body,
