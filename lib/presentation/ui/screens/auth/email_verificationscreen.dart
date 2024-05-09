@@ -72,7 +72,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                           onPressed: () async {
                             if (_formkey.currentState!.validate()) {
                               final response = await controller
-                                  .verifyEmail(_emailTEcontroller.text.trim());
+                                  .verifyemail(_emailTEcontroller.text.trim());
                               if (response) {
                                 Get.to(() => const OTPVerification());
                               } else {
