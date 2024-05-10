@@ -100,7 +100,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                     width: double.infinity,
                     child: TextButton(
                       onPressed: () {},
-                      child: const Text('Resend'),
+                      child: const Text('Resend.'),
                     )),
               ],
             ),
