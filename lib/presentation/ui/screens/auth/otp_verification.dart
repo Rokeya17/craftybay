@@ -15,7 +15,7 @@ class OTPVerification extends StatefulWidget {
 }
 
 class _OTPVerificationState extends State<OTPVerification> {
-  TextEditingController _OtpTEController = TextEditingController();
+  final TextEditingController _otpTEController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                 const SizedBox(height: 16),
                 SingleChildScrollView(
                   child: PinCodeTextField(
-                    controller: _OtpTEController,
+                    controller: _otpTEController,
                     keyboardType: TextInputType.number,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     appContext: context,
