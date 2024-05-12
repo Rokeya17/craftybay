@@ -80,7 +80,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       content: Text(
-                                          'Email Verification failed! Try again?'),
+                                          'Email verification failed! Try again?'),
                                     ),
                                   );
                                 }
