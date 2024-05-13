@@ -53,7 +53,7 @@ class _EmailVerificationState extends State<EmailVerification> {
                       if (text?.isEmpty ?? true) {
                         return 'Enter your email address';
                       } else if (text!.isEmail == false) {
-                        return 'Enter your valid email address';
+                        return 'Enter your valid email address.';
                       }
                       return null;
                     },
