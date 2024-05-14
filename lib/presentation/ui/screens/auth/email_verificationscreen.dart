@@ -74,7 +74,8 @@ class _EmailVerificationState extends State<EmailVerification> {
                               final response = await controller
                                   .verifyemail(_emailTEcontroller.text.trim());
                               if (response) {
-                                Get.to(() => const OTPVerification());
+                                Get.to(() => const OTPVerification(
+                                    email: _emailTEcontroller.text.trim()));
                               } else {
                                 if (mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(

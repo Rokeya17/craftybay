@@ -8,7 +8,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../utility/image_assets.dart';
 
 class OTPVerification extends StatefulWidget {
-  const OTPVerification({super.key});
+  const OTPVerification({super.key, required String email});
 
   @override
   State<OTPVerification> createState() => _OTPVerificationState();
