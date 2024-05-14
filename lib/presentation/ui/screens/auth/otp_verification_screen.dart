@@ -1,3 +1,4 @@
+import 'package:craftybay/presentation/state_holders/otpverification_controller.dart';
 import 'package:craftybay/presentation/ui/screens/auth/complete_profile_screen.dart';
 import 'package:craftybay/presentation/utility/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,12 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../utility/image_assets.dart';
+import '../bottom_nav_screen.dart';
 
 class OTPVerification extends StatefulWidget {
-  const OTPVerification({super.key, required String email});
+  final String email;
+
+  const OTPVerification({super.key, required this.email});
 
   @override
   State<OTPVerification> createState() => _OTPVerificationState();
@@ -16,6 +20,7 @@ class OTPVerification extends StatefulWidget {
 
 class _OTPVerificationState extends State<OTPVerification> {
   final TextEditingController _otpTEController = TextEditingController();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,10 +103,35 @@ class _OTPVerificationState extends State<OTPVerification> {
                 ),
                 SizedBox(
                     width: double.infinity,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text('Resend.'),
-                    )),
+                    child: GetBuilder<OtpVerificationController>(
+                        builder: (controller) {
+                      if (controller.otpVerificationInprogress) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return TextButton(
+                        onPressed: () async {
+                          if (_formkey.currentState!.validate()) {
+                            final response = await controller.verifyOtp(
+                                _otpTEController.text.trim(), widget.email);
+                            if (response) {
+                              Get.offAll(() => BottomNavigationScreen);
+                            } else {
+                              if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        'OTP verification failed! Try again?'),
+                                  ),
+                                );
+                              }
+                            }
+                          }
+                        },
+                        child: const Text('Resend.'),
+                      );
+                    })),
               ],
             ),
           ),
